@@ -96,7 +96,7 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -107,7 +107,12 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+
+      $producto = Producto::find($id);
+      $categorias = Categoria::where('activo',1)->get();
+      return view('productos.edita')->with(compact('producto'))->with(compact('categorias'));
+      //return var_dump($producto);
+
     }
 
     /**
@@ -119,7 +124,45 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validaciones = [
+          'nombre' => 'required|min:3|max:100|unique:tbl_productos,nombre,'.$id,
+          'precio'   => 'required|numeric',
+          'categoria'  => 'required',
+          'imagen' => 'image',
+      ];
+      $mensajes = [
+          'nombre.required' => 'El nombre no debe de ser vacío',
+          'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+          'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+          'nombre.unique' => 'El nombre ya existe',
+          'precio.required' => 'El precio no debe ser vacío',
+          'precio.numeric' => 'Precio no valido',
+          'categoria.integer' => 'Se necesita una categoria',
+          'imagen.image' => 'El archivo no es valido',
+      ];
+      $validar = Validator::make($request->all(),$validaciones,$mensajes);
+      if($validar->fails()){
+          return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+      }
+      else{
+          $producto = Producto::find($id);
+          $producto->nombre  = $request->nombre;
+          $producto->detalles = $request->detalles;
+          $producto->precio = $request->precio;
+          $producto->categorias_id = $request->categoria;
+
+          if (Input::hasFile('imagen')){
+              $file = Input::file('imagen');
+              $destinationPath = 'imagenes/categorias/';
+              $filename =uniqid().".".$file->getClientOriginalExtension();
+              $imagename =$destinationPath.$filename;
+              if($file->move($destinationPath,$filename)){
+                  $producto->imagen_principal=$imagename;
+              }
+          }
+          $producto->save();
+          return redirect('productos');
+      }
     }
 
     /**

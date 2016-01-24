@@ -15,26 +15,26 @@
                                 </div>
                                 <div class="x_content">
                                     <br />
-                                    {{ Form::open(array('url' => 'productos', 'class' => 'form-horizontal form-label-left', 'files' => true)) }}
+                                    {{ Form::open(array('url' => 'productos/'.$producto->id, 'class' => 'form-horizontal form-label-left', 'files' => true, 'method'=>'put')) }}
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" name="nombre" value="{{$producto->nombre}}" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="detalles">Detalles
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea class="form-control" name="detalles" rows="3"></textarea>
+                                                <textarea class="form-control" name="detalles" rows="3">{{$producto->detalles}}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precio">Precio <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="precio" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" name="precio" value="{{$producto->precio}}" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -42,18 +42,28 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <select name="categoria" class="form-control">
-                                                    <option>Seleccionar Categoría</option>
                                                     @foreach($categorias as $categoria)
+                                                      @if ($categoria->id==$producto->categorias_id)
+                                                        <option value="{{$categoria->id}}" selected>{{$categoria->nombre}}</option>
+                                                      @else
                                                         <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                                      @endif
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagenactual">Imagen Actual
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <img src='{{asset($producto->imagen_principal)}}' class="thumb" height="100" width="100" alt="a picture">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagen">Imagen <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="file" name="imagen" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="file" name="imagen" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
