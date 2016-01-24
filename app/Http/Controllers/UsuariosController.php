@@ -42,7 +42,7 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         $validaciones = [
-            'tipousuario_id' => 'required'
+            'tipousuario_id' => 'required',
             'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios',
             'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|',
             'password' => 'required|min:3|max:20|',
@@ -116,7 +116,7 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $validaciones = [
-            'tipousuario_id' => 'required'
+            'tipousuario_id' => 'required',
             'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios,nombre,'.$id,
             'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|',
             'password' => 'required|min:3|max:20|',
@@ -144,7 +144,7 @@ class UsuariosController extends Controller
             return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
         }else{
 
-            $usuario = new Usuario::find($id);
+            $usuario = Usuario::find($id);
             $usuario->tipousuario_id = $request->tipousuario_id;
             $usuario->nombre = $request->nombre;
             $usuario->usuario = $request->usuario;
@@ -162,7 +162,7 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = new Usuario::find($id);
+        $usuario = Usuario::find($id);
         $usuario->activo  = 0;
         $usuario->save();
         return redirect('usuarios');
