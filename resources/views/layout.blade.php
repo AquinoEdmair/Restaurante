@@ -50,6 +50,8 @@
                             <ul class="nav side-menu">
                                 <li><a href="{{URL::to('categorias')}}"><i class="fa fa-laptop"></i> Categorías</a>
                                 </li>
+                                <li><a href="{{URL::to('productos')}}"><i class="fa fa-laptop"></i> Productos</a>
+                                </li>
                             </ul>
                         </div>
 

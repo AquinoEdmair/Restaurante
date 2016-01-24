@@ -9,15 +9,17 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Lista de Categorías</h2>
+                                    <h2>Lista de Productos</h2>
                                     <div class="clearfix"></div>
-                                    <a href="{{URL::to('categorias/create')}}" class="btn btn-primary">Nueva Categoría</a>
+                                    <a href="{{URL::to('productos/create')}}" class="btn btn-primary">Nuevo Producto</a>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
                                                 <th>Nombre </th>
+                                                <th>Detalles </th>
+                                                <th>Precio </th>
                                                 <th>Imagen </th>
                                                 <th class=" no-link last"><span class="nobr">Acciones</span>
                                                 </th>
@@ -25,11 +27,13 @@
                                         </thead>
 
                                         <tbody>
-                                            @foreach($categorias as $categoria)
+                                            @foreach($productos as $producto)
                                                 <tr class="even pointer">
-                                                    <td class=" ">{{$categoria->nombre}}</td>
-                                                    <td class=" last"><img src='{{asset($categoria->imagen)}}' class="thumb" height="42" width="42" alt="a picture"></td>
-                                                    <td class=" last"><a href="{{ URL::to('categorias/' . $categoria->id . '/edit') }}" class="btn btn-success">Editar</a>
+                                                    <td class=" ">{{$producto->nombre}}</td>
+                                                    <td class=" ">{{$producto->detalles}}</td>
+                                                    <td class=" ">{{$producto->precio}}</td>
+                                                    <td class=" last"><img src='{{asset($producto->imagen_principal)}}' class="thumb" height="42" width="42" alt="a picture"></td>
+                                                    <td class=" last"><a href="{{ URL::to('productos/' . $producto->id . '/edit') }}" class="btn btn-success">Editar</a>
                                                     <a href="#" class="btn btn-danger">Eliminar</a>
                                                     </td>
                                                 </tr>

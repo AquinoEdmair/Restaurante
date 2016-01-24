@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Producto;
+use App\categoria;
+use Validator;
+use Illuminate\Support\Facades\Input;
 
 class ProductosController extends Controller
 {
@@ -16,7 +20,8 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::all();
+        return view('productos.productos')->with(compact('productos'));
     }
 
     /**
@@ -26,7 +31,8 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::where('activo',1)->get();
+        return view('productos.nuevo')->with(compact('categorias'));
     }
 
     /**
@@ -37,7 +43,49 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validaciones = [
+            'nombre' => 'required|min:3|max:100|unique:tbl_productos',
+            'imagen' => 'required|image',
+            'precio'   => 'required|numeric',
+            'categoria'  => 'required',
+        ];
+
+        $mensajes = [
+            'nombre.required' => 'El nombre no debe de ser vacío',
+            'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+            'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+            'nombre.unique' => 'El nombre ya existe',
+            'imagen.required' => 'Se necesita una imagen',
+            'imagen.image' => 'El archivo no es valido',
+            'precio.required' => 'El precio no debe ser vacío',
+            'precio.numeric' => 'Precio no valido',
+            'categoria.integer' => 'Se necesita una categoria',
+
+        ];
+
+        $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+        if($validar->fails()){
+            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+        }else{
+            $file = Input::file('imagen');
+            $destinationPath = 'imagenes/productos/';
+            $filename =uniqid().".".$file->getClientOriginalExtension();
+            $imagename =$destinationPath.$filename;
+            if($file->move($destinationPath,$filename))
+            {
+                $producto = new Producto();
+                $producto->nombre  = $request->nombre;
+                $producto->detalles = $request->detalles;
+                $producto->precio = $request->precio;
+                $producto->categorias_id = $request->categoria;
+                $producto->imagen_principal = $imagename;
+                $producto->activo   = 1;
+                $producto->save();
+            }
+
+            return redirect('productos');
+        }
     }
 
     /**
