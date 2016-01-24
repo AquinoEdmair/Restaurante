@@ -9,27 +9,27 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Lista de Categorías</h2>
+                                    <h2>Lista de Administradores</h2>
                                     <div class="clearfix"></div>
-                                    <a href="{{URL::to('categorias/create')}}" class="btn btn-primary">Nueva Categoría</a>
+                                    <a href="{{URL::to('usuarios/create')}}" class="btn btn-primary">Nuevo Administrador</a>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
                                                 <th>Nombre </th>
-                                                <th>Imagen </th>
+                                                <th>Usuario </th>
                                                 <th class=" no-link last"><span class="nobr">Acciones</span>
                                                 </th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            @foreach($categorias as $categoria)
+                                            @foreach($usuarios as $usuario)
                                                 <tr class="even pointer">
-                                                    <td class=" ">{{$categoria->nombre}}</td>
-                                                    <td class=" last"><img src='{{asset($categoria->imagen)}}' class="thumb" height="42" width="42" alt="a picture"></td>
-                                                    <td class=" last"><a href="{{ URL::to('categorias/' . $categoria->id . '/edit') }}" class="btn btn-success">Editar</a>
+                                                    <td class=" ">{{$usuario->nombre}}</td>
+                                                    <td class=" ">{{$usuario->usuario}}</td>
+                                                    <td class=" last"><a href="{{ URL::to('usuarios/' . $usuario->id . '/edit') }}" class="btn btn-success">Editar</a>
                                                     <a href="#" class="btn btn-danger">Eliminar</a>
                                                     </td>
                                                 </tr>

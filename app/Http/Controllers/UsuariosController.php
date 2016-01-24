@@ -30,7 +30,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('usuarios.new');
+        return view('usuarios.nuevo');
     }
 
     /**
@@ -103,7 +103,7 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = Usuario::find($id);
-        return view('usuarios.edit')->with(compact('usuario'));
+        return view('usuarios.edita')->with(compact('usuario'));
     }
 
     /**
