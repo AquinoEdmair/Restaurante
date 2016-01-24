@@ -19,7 +19,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::all(); 
         return view('usuarios.usuarios')->with(compact('usuarios'));
     }
 
@@ -30,7 +30,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('usuarios.nueva');
+        return view('usuarios.new');
     }
 
     /**
@@ -103,7 +103,7 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = Usuario::find($id);
-        return view('usuarios.edita')->with(compact('usuario'));
+        return view('usuarios.edit')->with(compact('usuario'));
     }
 
     /**

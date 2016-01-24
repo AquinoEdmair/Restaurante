@@ -52,6 +52,8 @@
                                 </li>
                                 <li><a href="{{URL::to('productos')}}"><i class="fa fa-laptop"></i> Productos</a>
                                 </li>
+                                <li><a href="{{URL::to('usuarios')}}"><i class="fa fa-laptop"></i> Administradores</a>
+                                </li>
                             </ul>
                         </div>
 
