@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Usuario;
+use App\TipoUsuario;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
@@ -30,7 +31,8 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('usuarios.nuevo');
+        $tipousuarios = TipoUsuario::all();
+        return view('usuarios.nuevo')->with(compact('tipousuarios'));
     }
 
     /**
