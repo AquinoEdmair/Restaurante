@@ -104,8 +104,10 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
+        $tipousuarios = TipoUsuario::all();
         $usuario = Usuario::find($id);
-        return view('usuarios.edita')->with(compact('usuario'));
+        return view('usuarios.edita')->with(compact('usuario','tipousuarios'));
+       
     }
 
     /**

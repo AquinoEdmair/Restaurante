@@ -17,10 +17,18 @@
                                     <br />
                                     {{ Form::open(array('url' => 'usuarios/'.$usuario->id, 'class' => 'form-horizontal form-label-left', 'files' => true, 'method'=>'put')) }}
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Tipo Usuario <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Tipo de Usuario <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tipousuario_id" required="required" class="form-control col-md-7 col-xs-12" value="{{$usuario->tipousuario_id}}">
+                                                <select name="tipousuario_id" class="form-control">
+                                                    @foreach($tipousuarios as $tipousuario)
+                                                        @if($tipousuario->id==$usuario->tipousuario_id)
+                                                            <option value="{{$tipousuario->id}}" selected>{{$tipousuario->nombre}}</option>
+                                                        @else
+                                                            <option value="{{$tipousuario->id}}">{{$tipousuario->nombre}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -20,9 +20,16 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Tipo de Usuario <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="tipousuario_id" required="required" class="form-control col-md-7 col-xs-12">
+                                                <select name="tipousuario_id" class="form-control">
+                                                    <option>Seleccionar Tipo de Usuario</option>
+                                                    @foreach($tipousuarios as $usuario)
+                                                        <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
+
+
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                                             </label>
