@@ -54,11 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'host'      => env('DB_HOST', '23.229.179.36'),
+            'database'  => env('DB_DATABASE', 'restaurante_aquisar'),
+            'username'  => env('DB_USERNAME', 'restaurante_app'),
+            'password'  => env('DB_PASSWORD', 'restaurante_app'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
