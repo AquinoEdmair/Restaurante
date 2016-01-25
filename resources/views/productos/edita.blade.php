@@ -53,17 +53,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagenactual">Imagen Actual
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagenactual">Imagen
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <img src='{{asset($producto->imagen_principal)}}' class="thumb" height="100" width="100" alt="a picture">
+                                                <img src='{{asset($producto->imagen_principal)}}' class="thumb" height="100" width="100" alt="a picture" id="blah">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagen">Imagen <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagen">Seleccionar Imagen <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="file" name="imagen" class="form-control col-md-7 col-xs-12">
+                                                <input type="file" name="imagen" class="form-control col-md-7 col-xs-12" id="imgInp">
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

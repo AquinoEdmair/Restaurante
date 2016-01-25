@@ -24,14 +24,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagenactual">Imagen Actual
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagenactual">Imagen
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <img src='{{asset($categoria->imagen)}}' class="thumb" height="100" width="100" alt="a picture" id="blah">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagen">Imagen
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imagen">Seleccionar Imagen
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="file" name="imagen" class="form-control col-md-7 col-xs-12" id="imgInp">
