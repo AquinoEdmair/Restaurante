@@ -25,6 +25,7 @@
 
     <script type="text/javascript" src="{{URL::asset('js/jquery.min.js')}}"></script>
 
+
 </head>
 
 
@@ -104,6 +105,7 @@
         <!-- icheck -->
         <script type="text/javascript" src="{{URL::asset('js/icheck/icheck.min.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('js/custom.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('js/InputFile.js')}}"></script>
 
         @yield('scripts')
 
