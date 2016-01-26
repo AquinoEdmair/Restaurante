@@ -41,6 +41,13 @@ class MesasController extends Controller
      */
     public function store(Request $request)
     {
+        $nombre=Input::get('nombre');
+
+        $mesa=Mesa::where('nombre','=',$nombre)->where('activo','=','0')->first();
+
+        // Si es nulo la mesa no existe
+        if (is_null($mesa)) {
+
         $validaciones = [
             'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z0-9 \t]*$/i|unique:tbl_mesas',
         ];
@@ -58,7 +65,6 @@ class MesasController extends Controller
         if($validar->fails()){
             return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
         }else{
-
                 $mesa = new Mesa();
                 $mesa->estatusmesas_id  = 1;
                 $mesa->nombre  = $request->nombre;
@@ -66,10 +72,42 @@ class MesasController extends Controller
                 $mesa->asignacion = 0;
                 $mesa->activo   = 1;
                 $mesa->save();
+                return redirect('mesas');
+
             }
 
-            return redirect('mesas');
+        }
+        else
+        {
 
+        $validaciones = [
+            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z0-9 \t]*$/i|',
+        ];
+
+        $mensajes = [
+            'nombre.required' => 'El nombre no debe de ser vacío',
+            'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+            'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+            'nombre.regex' => 'El nombre es invalido',
+            'nombre.unique' => 'El nombre ya existe',
+        ];
+
+         $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+        if($validar->fails()){
+            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+        }else{
+                //Esta eliminada se reactiva
+                $mesa->estatusmesas_id  = 1;
+                $mesa->nombre  = $request->nombre;
+                $mesa->uuid = '';
+                $mesa->asignacion = 0;
+                $mesa->activo   = 1;
+                $mesa->save();
+                return redirect('mesas');
+            }
+
+        }
     }
 
     /**
