@@ -10,6 +10,7 @@ use App\Producto;
 use App\Categoria;
 use Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductosController extends Controller
 {
@@ -73,7 +74,7 @@ class ProductosController extends Controller
         $validar = Validator::make($request->all(),$validaciones,$mensajes);
 
         if($validar->fails()){
-            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            return Redirect::back()->withErrors($validar)->withInput();
         }else{
             $file = Input::file('imagen');
             $destinationPath = 'imagenes/productos/';
@@ -119,7 +120,7 @@ class ProductosController extends Controller
         $validar = Validator::make($request->all(),$validaciones,$mensajes);
 
         if($validar->fails()){
-            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            return Redirect::back()->withErrors($validar)->withInput();
         }else{
             $file = Input::file('imagen');
             $destinationPath = 'imagenes/productos/';
@@ -136,7 +137,7 @@ class ProductosController extends Controller
                 $producto->save();
             }
             return redirect('productos');
-        } 
+        }
       }
     }
 
@@ -194,7 +195,7 @@ class ProductosController extends Controller
       ];
       $validar = Validator::make($request->all(),$validaciones,$mensajes);
       if($validar->fails()){
-          return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+          return Redirect::back()->withErrors($validar)->withInput();
       }
       else{
           $producto = Producto::find($id);

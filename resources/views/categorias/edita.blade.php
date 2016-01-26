@@ -20,7 +20,14 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value="{{$categoria->nombre}}">
+                                                <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12"
+                                                @if(old('nombre'))
+                                                  value="{{old('nombre')}}"
+                                                @else
+                                                 value="{{$categoria->nombre}}"
+                                                @endif
+                                                >
+                                                <p class="text-danger">{{$errors->first('nombre')}}</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -35,6 +42,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="file" name="imagen" class="form-control col-md-7 col-xs-12" id="imgInp">
+                                                <p class="text-danger">{{$errors->first('imagen')}}</p>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -43,7 +51,7 @@
                                                 <button type="submit" class="btn btn-success">Actualizar Categoría</button>
                                             </div>
                                         </div>
-                                    {{Form::close()}} 
+                                    {{Form::close()}}
                                 </div>
                             </div>
                         </div>
@@ -54,7 +62,7 @@
 
                     </div>
                 </div>
-                    
+
                 </div>
                 <!-- /page content -->
 

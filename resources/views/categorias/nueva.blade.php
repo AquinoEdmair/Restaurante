@@ -36,6 +36,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="file" name="imagen" required="required" class="form-control col-md-7 col-xs-12" id="imgInp">
+                                                <p class="text-danger">{{$errors->first('imagen')}}</p>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -44,7 +45,7 @@
                                                 <button type="submit" class="btn btn-success">Agregar Categoría</button>
                                             </div>
                                         </div>
-                                    {{Form::close()}} 
+                                    {{Form::close()}}
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
 
                     </div>
                 </div>
-                    
+
                 </div>
                 <!-- /page content -->
 

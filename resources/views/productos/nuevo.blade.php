@@ -20,21 +20,23 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" value="{{old('nombre')}}" name="nombre" required="required" class="form-control col-md-7 col-xs-12">
+                                                <p class="text-danger">{{$errors->first('nombre')}}</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="detalles">Detalles
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea class="form-control" name="detalles" rows="3"></textarea>
+                                                <textarea class="form-control" name="detalles" rows="3">{{old('detalles')}}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precio">Precio <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="precio" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="text" value="{{old('precio')}}" name="precio" required="required" class="form-control col-md-7 col-xs-12">
+                                                <p class="text-danger">{{$errors->first('precio')}}</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -44,9 +46,14 @@
                                                 <select name="categoria" class="form-control">
                                                     <option>Seleccionar Categoría</option>
                                                     @foreach($categorias as $categoria)
+                                                      @if(old('categoria')==$categoria->id)
+                                                        <option value="{{$categoria->id}}" selected>{{$categoria->nombre}}</option>
+                                                      @else
                                                         <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                                      @endif
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">{{$errors->first('categoria')}}</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -61,6 +68,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="file" name="imagen" required="required" class="form-control col-md-7 col-xs-12" id="imgInp">
+                                                <p class="text-danger">{{$errors->first('imagen')}}</p>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

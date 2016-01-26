@@ -106,7 +106,7 @@ class CategoriasController extends Controller
             $validar = Validator::make($request->all(),$validaciones,$mensajes);
 
             if($validar->fails()){
-                return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+                return Redirect::back()->withErrors($validar)->withInput();
             }else{
 
                 $file = Input::file('imagen');
@@ -176,7 +176,7 @@ class CategoriasController extends Controller
         $validar = Validator::make($request->all(),$validaciones,$mensajes);
 
         if($validar->fails()){
-            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+          return Redirect::back()->withErrors($validar)->withInput();
         }else{
 
             $categoria = Categoria::find($id);
