@@ -19,6 +19,7 @@
                                             <tr class="headings">
                                                 <th>Nombre </th>
                                                 <th>Estado Mesa </th>
+                                                <th>Asignado </th>
                                                 <th class=" no-link last"><span class="nobr">Acciones</span>
                                                 </th>
                                             </tr>
@@ -29,6 +30,7 @@
                                                 <tr class="even pointer"> 
                                                     <td class=" ">{{$mesa->nombre}}</td>
                                                     <td class=" ">{{$mesa->estatusmesas_id}}</td>
+                                                    <td class=" ">{{$mesa->asignacion}}</td>
                                                     <td class=" last">
                                                     {{ Form::open(array('url' => '/mesas/' . $mesa->id)) }} 
                                                         {{ Form::hidden('_method', 'DELETE') }}
