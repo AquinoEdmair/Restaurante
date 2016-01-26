@@ -14,27 +14,68 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <br />
-                                    <div class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    <br/>
+                                    <div class="col-md-12 col-sm-12 col-xs-6">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
                                     <td style="padding-right:5px;">
-                                    <div class="swatch" style="background-color:#298A08"></div>
+                                    <div class="swatch swatchDisponible">
+                                    <br>
+                                        Nombre Mesa
+                                        <br>
+                                        Total de venta
+                                        <br>
+                                        <br>
+                                        <i class="fa fa-laptop"></i>
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
                                     </td>
                                     </div>
-                                    <div class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
                                     <td style="padding-right:5px;">
-                                    <div class="swatch" style="background-color:#298A08"></div>
+                                    <div class="swatch swatchOcupada">
+                                    <br>
+                                        Nombre Mesa
+                                        <br>
+                                        Total de venta
+                                        <br>
+                                        <br>
+                                        <i class="fa fa-laptop"></i>
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
                                     </td>
                                     </div>
-                                    <div class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
                                     <td style="padding-right:5px;">
-                                    <div class="swatch" style="background-color:#298A08"></div>
+                                    <div class="swatch swatchNoAsignada">
+                                    <br>
+                                        Nombre Mesa
+                                        <br>
+                                        Total de venta
+                                        <br>
+                                        <br>
+                                        <i class="fa fa-laptop"></i>
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
                                     </td>
                                     </div>
-                                    <div class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
                                     <td style="padding-right:5px;">
-                                    <div class="swatch" style="background-color:#298A08"></div>
+                                    <div class="swatch swatchDisponible">
+                                    <br>
+                                        Nombre Mesa
+                                        <br>
+                                        Total de venta
+                                        <br>
+                                        <br>
+                                        <i class="fa fa-laptop"></i>
+                                        <i class="fa fa-laptop"></i>
+                                    </div>
                                     </td>
                                     </div>
+                                    </div>
+                                    
+
+
 
                             </div>
                         </div>

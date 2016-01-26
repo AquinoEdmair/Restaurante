@@ -6344,8 +6344,36 @@ ul.notifications {
     opacity: 1;
 }
 
-.swatch{
+.swatchDisponible{
     width:120px;
     height:120px;
     border-radius:5px;
+    background-color: #5cb85c;
 }
+
+.swatchOcupada{
+    width:120px;
+    height:120px;
+    border-radius:5px;
+    background-color: #d9534f;
+}
+
+.swatchNoAsignada{
+    width:120px;
+    height:120px;
+    border-radius:5px;
+    background-color: #555;
+}
+
+
+div .swatch{
+    color:#fff;
+    text-align: center;
+    border-top: 30px;
+    font-size: 14px;
+}
+
+div .swatch i{
+    font-size: 30px;
+}
+
