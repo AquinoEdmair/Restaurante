@@ -88,3 +88,6 @@
                 <!-- /page content -->
 
 @stop
+@section('scripts')
+<script type="text/javascript" src="{{URL::asset('js/InputFile.js')}}"></script>
+@stop
