@@ -19,7 +19,7 @@ class MesasController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::all();
+        $mesas = Mesa::where('activo',1)->get();
         return view('mesas.mesas')->with(compact('mesas'));
     }
 
