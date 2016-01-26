@@ -43,44 +43,93 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        $validaciones = [
-            'tipousuario_id' => 'required',
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|',
-            'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios',
-            'password' => 'required|min:3|max:20|',
-        ];
+        $_usuario=Input::get('usuario');
 
-        $mensajes = [
-            'tipousuario_id.required' => 'Debe seleccionar el tipo de usuario',
-            'nombre.required' => 'El nombre no debe de ser vacío',
-            'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
-            'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
-            'nombre.regex' => 'El nombre es invalido',
-            'usuario.required' => 'El usuario no debe de ser vacío',
-            'usuario.min' => 'El usuario debe ser mayor a 3 caracteres',
-            'usuario.max' => 'El usuario no debe ser mayor a 20 caracteres',
-            'usuario.regex' => 'El usuario es invalido',
-            'password.required' => 'El password no debe de ser vacío',
-            'password.min' => 'El password debe ser mayor a 3 caracteres',
-            'password.max' => 'El password no debe ser mayor a 20 caracteres',
-            'password.regex' => 'El password es invalido',
-        ];
+        $usuario=Usuario::where('usuario','=',$_usuario)->where('activo','=','0')->first();
 
-        $validar = Validator::make($request->all(),$validaciones,$mensajes);
+        // Si es nulo el usuario no existe
+        if (is_null($usuario)) {
 
-        if($validar->fails()){
-            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
-        }else{
+            $validaciones = [
+                'tipousuario_id' => 'required',
+                'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|',
+                'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios',
+                'password' => 'required|min:3|max:20|',
+            ];
 
-                $usuario = new Usuario();
-                $usuario->tipousuario_id = $request->tipousuario_id;
-                $usuario->nombre = $request->nombre;
-                $usuario->usuario = $request->usuario;
-                $usuario->password = $request->password;
-                $usuario->activo  = 1;
-                $usuario->save();
+            $mensajes = [
+                'tipousuario_id.required' => 'Debe seleccionar el tipo de usuario',
+                'nombre.required' => 'El nombre no debe de ser vacío',
+                'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+                'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+                'nombre.regex' => 'El nombre es invalido',
+                'usuario.required' => 'El usuario no debe de ser vacío',
+                'usuario.min' => 'El usuario debe ser mayor a 3 caracteres',
+                'usuario.max' => 'El usuario no debe ser mayor a 20 caracteres',
+                'usuario.regex' => 'El usuario es invalido',
+                'password.required' => 'El password no debe de ser vacío',
+                'password.min' => 'El password debe ser mayor a 3 caracteres',
+                'password.max' => 'El password no debe ser mayor a 20 caracteres',
+                'password.regex' => 'El password es invalido',
+            ];
 
-            return redirect('usuarios');
+            $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+            if($validar->fails()){
+                return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            }else{
+
+                    $usuario = new Usuario();
+                    $usuario->tipousuario_id = $request->tipousuario_id;
+                    $usuario->nombre = $request->nombre;
+                    $usuario->usuario = $request->usuario;
+                    $usuario->password = $request->password;
+                    $usuario->activo  = 1;
+                    $usuario->save();
+
+                return redirect('usuarios');
+            }
+        }
+        else
+        {
+             $validaciones = [
+                'tipousuario_id' => 'required',
+                'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|',
+                'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|',
+                'password' => 'required|min:3|max:20|',
+            ];
+
+            $mensajes = [
+                'tipousuario_id.required' => 'Debe seleccionar el tipo de usuario',
+                'nombre.required' => 'El nombre no debe de ser vacío',
+                'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+                'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+                'nombre.regex' => 'El nombre es invalido',
+                'usuario.required' => 'El usuario no debe de ser vacío',
+                'usuario.min' => 'El usuario debe ser mayor a 3 caracteres',
+                'usuario.max' => 'El usuario no debe ser mayor a 20 caracteres',
+                'usuario.regex' => 'El usuario es invalido',
+                'password.required' => 'El password no debe de ser vacío',
+                'password.min' => 'El password debe ser mayor a 3 caracteres',
+                'password.max' => 'El password no debe ser mayor a 20 caracteres',
+                'password.regex' => 'El password es invalido',
+            ];
+
+            $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+            if($validar->fails()){
+                return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            }else{
+
+                    $usuario->tipousuario_id = $request->tipousuario_id;
+                    $usuario->nombre = $request->nombre;
+                    $usuario->usuario = $request->usuario;
+                    $usuario->password = $request->password;
+                    $usuario->activo  = 1;
+                    $usuario->save();
+
+                return redirect('usuarios');
+            }
         }
 
     }
