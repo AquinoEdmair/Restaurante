@@ -41,41 +41,87 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $validaciones = [
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_categorias',
-            'imagen' => 'required|image',
-        ];
 
-        $mensajes = [
-            'nombre.required' => 'El nombre no debe de ser vacío',
-            'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
-            'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
-            'nombre.regex' => 'El nombre es invalido',
-            'nombre.unique' => 'El nombre ya existe',
-            'imagen.required' => 'Se necesita una imagen',
-            'imagen.image' => 'El archivo no es valido',
-        ];
+        $nombre=Input::get('nombre');
 
-        $validar = Validator::make($request->all(),$validaciones,$mensajes);
+        $categoria=Categoria::where('nombre','=',$nombre)->where('activo','=','0')->first();
 
-        if($validar->fails()){
-            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
-        }else{
+        // Si es nulo la categoría no existe
+        if (is_null($categoria)) {
 
-            $file = Input::file('imagen');
-            $destinationPath = 'imagenes/categorias/';
-            $filename =uniqid().".".$file->getClientOriginalExtension();
-            $imagename =$destinationPath.$filename;
-            if($file->move($destinationPath,$filename))
-            {
-                $categoria = new Categoria();
-                $categoria->nombre   = $request->nombre;
-                $categoria->imagen=$imagename;
-                $categoria->activo   = 1;
-                $categoria->save();
+            $validaciones = [
+                'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_categorias',
+                'imagen' => 'required|image',
+            ];
+
+            $mensajes = [
+                'nombre.required' => 'El nombre no debe de ser vacío',
+                'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+                'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+                'nombre.regex' => 'El nombre es invalido',
+                'nombre.unique' => 'El nombre ya existe',
+                'imagen.required' => 'Se necesita una imagen',
+                'imagen.image' => 'El archivo no es valido',
+            ];
+
+            $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+            if($validar->fails()){
+                return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            }else{
+
+                $file = Input::file('imagen');
+                $destinationPath = 'imagenes/categorias/';
+                $filename =uniqid().".".$file->getClientOriginalExtension();
+                $imagename =$destinationPath.$filename;
+                if($file->move($destinationPath,$filename))
+                {
+                    $categoria = new Categoria();
+                    $categoria->nombre   = $request->nombre;
+                    $categoria->imagen=$imagename;
+                    $categoria->activo   = 1;
+                    $categoria->save();
+                }
+
+                return redirect('categorias');
             }
 
-            return redirect('categorias');
+        }else{
+            //Esta eliminada se reactiva
+            $validaciones = [
+                'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i',
+                'imagen' => 'required|image',
+            ];
+
+            $mensajes = [
+                'nombre.required' => 'El nombre no debe de ser vacío',
+                'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+                'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+                'nombre.regex' => 'El nombre es invalido',
+                'imagen.required' => 'Se necesita una imagen',
+                'imagen.image' => 'El archivo no es valido',
+            ];
+
+            $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+            if($validar->fails()){
+                return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+            }else{
+
+                $file = Input::file('imagen');
+                $destinationPath = 'imagenes/categorias/';
+                $filename =uniqid().".".$file->getClientOriginalExtension();
+                $imagename =$destinationPath.$filename;
+                if($file->move($destinationPath,$filename))
+                {
+                    $categoria->nombre = $request->nombre;
+                    $categoria->imagen = $imagename;
+                    $categoria->activo = 1;
+                    $categoria->save();
+                }
+
+                return redirect('categorias');
+            }
         }
 
     }
