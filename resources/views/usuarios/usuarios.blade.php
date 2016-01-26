@@ -29,8 +29,12 @@
                                                 <tr class="even pointer">
                                                     <td class=" ">{{$usuario->nombre}}</td>
                                                     <td class=" ">{{$usuario->usuario}}</td>
-                                                    <td class=" last"><a href="{{ URL::to('usuarios/' . $usuario->id . '/edit') }}" class="btn btn-success">Editar</a>
-                                                    <a href="#" class="btn btn-danger">Eliminar</a>
+                                                    <td class=" last">
+                                                    {{ Form::open(array('url' => '/usuarios/' . $usuario->id)) }} 
+                                                        {{ Form::hidden('_method', 'DELETE') }}
+                                                            <a href="{{ URL::to('usuarios/' . $usuario->id . '/edit') }}" class="btn btn-success">Editar</a>
+                                                        {{ Form::submit('Eliminar', array('class' => 'btn btn-danger')) }}
+                                                    {{ Form::close() }}
                                                     </td>
                                                 </tr>
                                             @endforeach

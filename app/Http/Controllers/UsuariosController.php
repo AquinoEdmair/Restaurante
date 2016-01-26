@@ -20,7 +20,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all(); 
+        $usuarios = Usuario::where('activo',1)->get();
         return view('usuarios.usuarios')->with(compact('usuarios'));
     }
 

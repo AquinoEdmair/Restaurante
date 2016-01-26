@@ -19,7 +19,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('activo',1)->get();
         return view('categorias.categorias')->with(compact('categorias'));
     }
 
@@ -158,6 +158,9 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->activo  = 0;
+        $categoria->save();
+        return redirect('categorias');
     }
 }

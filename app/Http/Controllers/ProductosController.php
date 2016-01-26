@@ -20,7 +20,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
+        $productos = Producto::where('activo',1)->get();
         return view('productos.productos')->with(compact('productos'));
     }
 
@@ -173,6 +173,9 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->activo  = 0;
+        $producto->save();
+        return redirect('productos');
     }
 }

@@ -33,8 +33,12 @@
                                                     <td class=" ">{{$producto->detalles}}</td>
                                                     <td class=" ">{{$producto->precio}}</td>
                                                     <td class=" last"><img src='{{asset($producto->imagen_principal)}}' class="thumb" height="42" width="42" alt="a picture"></td>
-                                                    <td class=" last"><a href="{{ URL::to('productos/' . $producto->id . '/edit') }}" class="btn btn-success">Editar</a>
-                                                    <a href="#" class="btn btn-danger">Eliminar</a>
+                                                    <td class=" last">
+                                                    {{ Form::open(array('url' => '/productos/' . $producto->id)) }} 
+                                                        {{ Form::hidden('_method', 'DELETE') }}
+                                                            <a href="{{ URL::to('productos/' . $producto->id . '/edit') }}" class="btn btn-success">Editar</a>
+                                                        {{ Form::submit('Eliminar', array('class' => 'btn btn-danger')) }}
+                                                    {{ Form::close() }}
                                                     </td>
                                                 </tr>
                                             @endforeach
