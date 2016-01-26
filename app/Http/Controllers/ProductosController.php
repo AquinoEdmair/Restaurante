@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Producto;
-use App\categoria;
+use App\Categoria;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
