@@ -43,6 +43,13 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+        $nombre=Input::get('nombre');
+
+        $producto=Producto::where('nombre','=',$nombre)->where('activo','=','0')->first();
+
+        // Si es nulo el producto no existe
+        if (is_null($producto)) {
+
         $validaciones = [
             'nombre' => 'required|min:3|max:100|unique:tbl_productos',
             'imagen' => 'required|image',
@@ -86,6 +93,51 @@ class ProductosController extends Controller
 
             return redirect('productos');
         }
+      }
+      else
+      {
+        $validaciones = [
+            'nombre' => 'required|min:3|max:100|',
+            'imagen' => 'required|image',
+            'precio'   => 'required|numeric',
+            'categoria'  => 'required',
+        ];
+
+        $mensajes = [
+            'nombre.required' => 'El nombre no debe de ser vacío',
+            'nombre.min' => 'El nombre debe ser mayor a 3 caracteres',
+            'nombre.max' => 'El nombre no debe ser mayor a 100 caracteres',
+            'nombre.unique' => 'El nombre ya existe',
+            'imagen.required' => 'Se necesita una imagen',
+            'imagen.image' => 'El archivo no es valido',
+            'precio.required' => 'El precio no debe ser vacío',
+            'precio.numeric' => 'Precio no valido',
+            'categoria.integer' => 'Se necesita una categoria',
+
+        ];
+
+        $validar = Validator::make($request->all(),$validaciones,$mensajes);
+
+        if($validar->fails()){
+            return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
+        }else{
+            $file = Input::file('imagen');
+            $destinationPath = 'imagenes/productos/';
+            $filename =uniqid().".".$file->getClientOriginalExtension();
+            $imagename =$destinationPath.$filename;
+            if($file->move($destinationPath,$filename))
+            {
+                $producto->nombre  = $request->nombre;
+                $producto->detalles = $request->detalles;
+                $producto->precio = $request->precio;
+                $producto->categorias_id = $request->categoria;
+                $producto->imagen_principal = $imagename;
+                $producto->activo   = 1;
+                $producto->save();
+            }
+            return redirect('productos');
+        } 
+      }
     }
 
     /**
