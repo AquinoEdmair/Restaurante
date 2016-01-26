@@ -45,8 +45,8 @@ class UsuariosController extends Controller
     {
         $validaciones = [
             'tipousuario_id' => 'required',
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios',
-            'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|',
+            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|',
+            'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios',
             'password' => 'required|min:3|max:20|',
         ];
 
@@ -121,8 +121,8 @@ class UsuariosController extends Controller
     {
         $validaciones = [
             'tipousuario_id' => 'required',
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios,nombre,'.$id,
-            'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|',
+            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|',
+            'usuario' => 'required|min:3|max:20|regex:/^[A-Za-z \t]*$/i|unique:tbl_usuarios,nombre,'.$id,
             'password' => 'required|min:3|max:20|',
         ];
 

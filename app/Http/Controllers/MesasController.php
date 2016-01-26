@@ -42,7 +42,7 @@ class MesasController extends Controller
     public function store(Request $request)
     {
         $validaciones = [
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_mesas',
+            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z0-9 \t]*$/i|unique:tbl_mesas',
         ];
 
         $mensajes = [
@@ -105,7 +105,7 @@ class MesasController extends Controller
     public function update(Request $request, $id)
     {
         $validaciones = [
-            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z \t]*$/i|unique:tbl_mesas',
+            'nombre' => 'required|min:3|max:100|regex:/^[A-Za-z0-9 \t]*$/i|unique:tbl_mesas,nombre,'.$id,
         ];
 
         $mensajes = [
