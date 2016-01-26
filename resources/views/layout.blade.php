@@ -55,6 +55,8 @@
                                 </li>
                                 <li><a href="{{URL::to('usuarios')}}"><i class="fa fa-laptop"></i> Administradores</a>
                                 </li>
+                                <li><a href="{{URL::to('mesas')}}"><i class="fa fa-laptop"></i> Mesas</a>
+                                </li>
                             </ul>
                         </div>
 

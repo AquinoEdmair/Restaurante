@@ -33,4 +33,5 @@ Route::group(['middleware' => ['web']], function () {
 Route::resource('categorias', 'CategoriasController');
 Route::resource('productos', 'ProductosController');
 Route::resource('usuarios', 'UsuariosController');
+Route::resource('mesas', 'MesasController');
 

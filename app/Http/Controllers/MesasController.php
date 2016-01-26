@@ -69,7 +69,6 @@ class MesasController extends Controller
             }
 
             return redirect('mesas');
-        }
 
     }
 
@@ -122,7 +121,7 @@ class MesasController extends Controller
         if($validar->fails()){
             return \Response::json(['error' => 'true', 'msg' => $validar->messages(), 'status' => '200'], 200);
         }else{
-                $mesa = new Mesa::find($id);
+                $mesa = Mesa::find($id);
                 $mesa->nombre = $request->nombre;
                 $mesa->activo  = 1;
                 $mesa->save();
