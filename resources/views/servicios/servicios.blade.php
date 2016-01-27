@@ -14,79 +14,40 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <br/>
-                                    <div class="col-md-12 col-sm-12 col-xs-6">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <td style="padding-right:5px;">
-                                    <div class="swatch swatchDisponible">
-                                    <br>
-                                        Nombre Mesa
-                                        <br>
-                                        Total de venta
-                                        <br>
-                                        <br>
-                                        <i class="fa fa-laptop"></i>
-                                        <i class="fa fa-laptop"></i>
-                                    </div>
-                                    </td>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <td style="padding-right:5px;">
-                                    <div class="swatch swatchOcupada">
-                                    <br>
-                                        Nombre Mesa
-                                        <br>
-                                        Total de venta
-                                        <br>
-                                        <br>
-                                        <i class="fa fa-laptop"></i>
-                                        <i class="fa fa-laptop"></i>
-                                    </div>
-                                    </td>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <td style="padding-right:5px;">
-                                    <div class="swatch swatchNoAsignada">
-                                    <br>
-                                        Nombre Mesa
-                                        <br>
-                                        Total de venta
-                                        <br>
-                                        <br>
-                                        <i class="fa fa-laptop"></i>
-                                        <i class="fa fa-laptop"></i>
-                                    </div>
-                                    </td>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <td style="padding-right:5px;">
-                                    <div class="swatch swatchDisponible">
-                                    <br>
-                                        Nombre Mesa
-                                        <br>
-                                        Total de venta
-                                        <br>
-                                        <br>
-                                        <i class="fa fa-laptop"></i>
-                                        <i class="fa fa-laptop"></i>
-                                    </div>
-                                    </td>
-                                    </div>
-                                    </div>
-                                    
+                                    <div class="col-md-12 col-sm-12 col-xs-6" >
 
-
-
+                                        @foreach($servicios as $servicio)
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <td style="padding-right:5px;">
+                                                @if($servicio->asignacion==0)
+                                                    <div class="swatch swatchNoAsignada">
+                                                @else if($servicio->asignacion==1)
+                                                    @if($servicio->estatusmesas_id==1)
+                                                        <div class="swatch swatchDisponible">
+                                                    @else if($servicio->estatusmesas_id==2)
+                                                        <div class="swatch swatchOcupada">
+                                                    @endif
+                                                @endif
+                                                    <br>
+                                                        {{$servicio->nombre}}
+                                                        <br>
+                                                        Total de venta
+                                                        <br>
+                                                        <br>
+                                                        <i class="fa fa-laptop"></i>
+                                                        <i class="fa fa-laptop"></i>
+                                                </div>
+                                            </td>
+                                        </div>
+                                        @endforeach
+                                    </div>
                             </div>
                         </div>
-
                         <br />
                         <br />
                         <br />
-
                     </div>
                 </div>
-
                 </div>
                 <!-- /page content -->
 
