@@ -16,7 +16,7 @@
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
-                                            <tr class="headings">
+                                            <tr class="headings">      
                                                 <th>Nombre </th>
                                                 <th>Estado Mesa </th>
                                                 <th>Asignado </th>

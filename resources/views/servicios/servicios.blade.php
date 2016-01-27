@@ -26,7 +26,7 @@
                                                         <div class="swatch swatchDisponible">
                                                     @else if($servicio->estatusmesas_id==2)
                                                         <div class="swatch swatchOcupada">
-                                                    @endif
+                                                    @endif   
                                                 @endif
                                                     <br>
                                                         {{$servicio->nombre}}
