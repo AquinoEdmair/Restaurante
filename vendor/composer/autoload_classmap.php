@@ -10,6 +10,7 @@ return array(
     'CreateCategoriasTable' => $baseDir . '/database/migrations/2016_01_23_092344_create_categorias_table.php',
     'CreateDetallespedidosTable' => $baseDir . '/database/migrations/2016_01_23_092910_create_detallespedidos_table.php',
     'CreateEstatusCajasTable' => $baseDir . '/database/migrations/2016_01_23_090916_create_estatus_cajas_table.php',
+    'CreateEstatusDetallesPedidoTable' => $baseDir . '/database/migrations/2016_01_27_074207_create_estatus_detalles_pedido_table.php',
     'CreateEstatusMesasTable' => $baseDir . '/database/migrations/2016_01_23_091208_create_estatus_mesas_table.php',
     'CreateEstatuspedidosTable' => $baseDir . '/database/migrations/2016_01_23_092554_create_estatuspedidos_table.php',
     'CreateImagenesProductosTable' => $baseDir . '/database/migrations/2016_01_23_091339_create_imagenes_productos_table.php',
