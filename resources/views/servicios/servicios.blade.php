@@ -31,7 +31,7 @@
                                                     <br>
                                                         {{$servicio->nombre}}
                                                         <br>
-                                                        $ 0.000
+                                                        $ {{$servicio->pedidos->total}}
                                                         <br>
                                                         <br>
                                                         <i class="fa fa-laptop"></i>
@@ -51,7 +51,17 @@
                 </div>
                 <!-- /page content -->
 
+
 @stop
 @section('scripts')
-<script type="text/javascript" src="{{URL::asset('js/InputFile.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('js/Servicios.js')}}"></script>
+<script type="text/javascript">
+var ids_mesas = [
+@foreach ($servicios as $servicio)
+    [{{ $servicio->id }}],     
+@endforeach
+];
+
+
+</script>
 @stop

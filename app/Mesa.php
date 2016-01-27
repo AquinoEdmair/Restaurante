@@ -12,4 +12,8 @@ class Mesa extends Model
     public function estatusmesas(){
         return $this->hasOne('App\EstatusMesa','id','estatusmesas_id');
     }
+
+    public function pedidos(){
+        return $this->hasOne('App\Pedido','id','mesas_id');
+    }
 }
