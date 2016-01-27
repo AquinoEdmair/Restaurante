@@ -30,7 +30,11 @@
                                                 <tr class="even pointer"> 
                                                     <td class=" ">{{$mesa->nombre}}</td>
                                                     <td class=" ">{{$mesa->estatusmesas->descripcion}}</td>
+<<<<<<< HEAD
                                                     <td class=" "> @if($mesa->asignacion==1) La Mesa esta asignada a una tablet @else La mesa no esta asignada a una tablet @endif</td>
+=======
+                                                    <td class=" "> @if($mesa->asignacion==1) Mesa asignada a una tablet @else Mesa no asignada a una tablet @endif</td>
+>>>>>>> origin/master
                                                     <td class=" last">
                                                     {{ Form::open(array('url' => '/mesas/' . $mesa->id)) }} 
                                                         {{ Form::hidden('_method', 'DELETE') }}
