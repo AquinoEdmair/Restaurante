@@ -21,10 +21,10 @@
                                             <td style="padding-right:5px;">
                                                 @if($servicio->asignacion==0)
                                                     <div class="swatch swatchNoAsignada">
-                                                @else if($servicio->asignacion==1)
+                                                @elseif($servicio->asignacion==1)
                                                     @if($servicio->estatusmesas_id==1)
                                                         <div class="swatch swatchDisponible">
-                                                    @else if($servicio->estatusmesas_id==2)
+                                                    @elseif($servicio->estatusmesas_id==2)
                                                         <div class="swatch swatchOcupada">
                                                     @endif   
                                                 @endif
