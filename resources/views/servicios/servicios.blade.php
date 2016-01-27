@@ -17,17 +17,21 @@
                                     <div class="col-md-12 col-sm-12 col-xs-6" >
 
                                         @foreach($servicios as $servicio)
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-3 col-sm-3 col-xs-12" id ="{{ $servicio->id }}">
                                             <td style="padding-right:5px;">
                                                 @if($servicio->asignacion==0)
                                                     <div class="swatch swatchNoAsignada">
                                                 @elseif($servicio->asignacion==1)
-                                                    <div class="swatch swatchDisponible">
+                                                    @if($servicio->estatusmesas_id==1)
+                                                        <div class="swatch swatchDisponible">
+                                                    @elseif($servicio->estatusmesas_id==2)
+                                                        <div class="swatch swatchOcupada">
+                                                    @endif   
                                                 @endif
                                                     <br>
                                                         {{$servicio->nombre}}
                                                         <br>
-                                                        Total de venta
+                                                        $ 0.000
                                                         <br>
                                                         <br>
                                                         <i class="fa fa-laptop"></i>

@@ -72,7 +72,7 @@ class MesasController extends Controller
                 $mesa->asignacion = 0;
                 $mesa->activo   = 1;
                 $mesa->save();
-                return redirect('mesas');
+                return redirect('mesas');          
 
             }
 
