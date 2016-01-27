@@ -1,5 +1,7 @@
 <?php
 
+use App\Mesa;
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -32,4 +34,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('usuarios', 'UsuariosController');
     Route::resource('mesas', 'MesasController');
     Route::get('servicios', 'AdminController@verMesas');
+});
+
+
+Route::get('/obtieneMesas', function () {
+    $mesas = Mesa::where('activo',1)->with("estatusmesas")->get();
+    return \Response::json(['error' => 'false', 'msg' => $mesas, 'status' => '200'], 200);
 });
