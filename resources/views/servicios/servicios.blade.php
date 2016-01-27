@@ -38,7 +38,7 @@
                                                         @endif
                                                         <br>
                                                         <br>
-                                                        <i class="fa fa-laptop"></i>
+                                                        <i class="fa fa-laptop">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</i>
                                                         <i class="fa fa-laptop"></i>
                                                 </div>
                                             </td>

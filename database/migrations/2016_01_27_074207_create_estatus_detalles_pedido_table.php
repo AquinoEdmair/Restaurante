@@ -12,7 +12,7 @@ class CreateEstatusDetallesPedidoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_estatus_detallespedidos', function (Blueprint $table) {
+        Schema::create('tbl_estatusdetallespedidos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateEstatusDetallesPedidoTable extends Migration
      */
     public function down()
     {
-        Schema::table('tbl_estatus_detallespedidos', function (Blueprint $table) {
+        Schema::table('tbl_estatusdetallespedidos', function (Blueprint $table) {
             //
         });
     }
