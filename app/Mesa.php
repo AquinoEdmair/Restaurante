@@ -13,7 +13,7 @@ class Mesa extends Model
         return $this->hasOne('App\EstatusMesa','id','estatusmesas_id');
     }
 
-    public function pedidos(){
-        return $this->hasOne('App\Pedido','id','mesas_id');
+    public function pedido(){
+        return $this->hasOne('App\Pedido','id','mesas_id')->where('estatuspedidos_id',1);
     }
 }

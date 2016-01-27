@@ -16,7 +16,6 @@ class CreateDetallespedidosTable extends Migration
             $table->increments('id');
             $table->integer('pedidos_id');
             $table->integer('productos_id');
-            $table->integer('estatuspedidos_id');
             $table->string('nombre');
             $table->decimal('precio', 8, 3); 
             $table->tinyInteger('cantidad');

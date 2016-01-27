@@ -11,7 +11,7 @@ class AdminController extends BaseController
 {
 	public function verMesas()
     {
-    	$servicios = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->with('pedidos')->get();
+    	$servicios = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->with('pedido')->get();
     	return view('servicios.servicios')->with(compact('servicios'));
     }
 
