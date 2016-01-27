@@ -36,4 +36,5 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::get('obtieneMesas', 'AdminController@obtieneMesas');
 Route::post('actualizaMesa', 'AdminController@actualizaMesa');
+Route::get('obtieneCategorias', 'AdminController@obtieneCategorias');
 
