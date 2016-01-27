@@ -6374,7 +6374,8 @@ div .swatch{
     font-size: 14px;
 }
 
-div .swatch i{
+div .swatch a i{
     font-size: 30px;
+    color: #fff;
 }
 

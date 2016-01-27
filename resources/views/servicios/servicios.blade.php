@@ -38,12 +38,31 @@
                                                         @endif
                                                         <br>
                                                         <br>
-                                                        <i class="fa fa-laptop">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</i>                                                        
-                                                        <i class="fa fa-laptop"></i>
+                                                        <a data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-taxi ">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</i></a>                                                        
+                                                        <a data-toggle="modal"><i class="fa fa-archive"></i></a>
                                                 </div>
                                             </td>
                                         </div>
                                         @endforeach
+                                    </div>
+                                    <!-- Button trigger modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            ...
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                             </div>
                         </div>

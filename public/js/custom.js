@@ -314,4 +314,10 @@ $(document).ready(function () {
             });
 
 });
+
+$(".verPedidos").click(function(){
+    $('#myModal').modal('show');
+});
+
+
 /** ******  /scrollview  *********************** **/
