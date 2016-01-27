@@ -32,8 +32,9 @@
                                                         {{$servicio->nombre}}
                                                         <br>
                                                         @if($servicio->pedido)
-                                                            {{$servicio->pedido->total}}
+                                                        $  {{$servicio->pedido->total}}
                                                         @endif
+                                                        $ 0.000
                                                         <br>
                                                         <br>
                                                         <i class="fa fa-laptop"></i>
