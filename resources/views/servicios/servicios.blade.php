@@ -54,7 +54,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title" id="myModalLabel">Nuevos Pedidos</h4>
                                           </div>
-                                          <div class="modal-body">
+                                          <div class="modal-body" id="notificaciones_pedidos">
                                             <table>
                                                 <tr>
                                                     <td>Nombre:</td>
@@ -117,7 +117,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title" id="myModalLabel">Pedidos</h4>
                                           </div>
-                                          <div class="modal-body">
+                                          <div class="modal-body" id="pedidos_detalle">
                                             <table>
                                                 <tr>
                                                     <td>Nombre:</td>
