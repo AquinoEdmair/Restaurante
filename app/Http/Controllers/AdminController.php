@@ -44,5 +44,11 @@ class AdminController extends BaseController
         return \Response::json(['error' => 'false', 'msg' => $mesa, 'status' => '200'], 200);
     }
 
+    public function pedidosMesa($id)
+    {
+        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->get();
+        return \Response::json(['error' => 'false', 'msg' => $mesa, 'status' => '200'], 200);
+    }
+
 
 }

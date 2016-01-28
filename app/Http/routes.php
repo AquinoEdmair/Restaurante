@@ -38,4 +38,5 @@ Route::get('obtieneMesas', 'AdminController@obtieneMesas');
 Route::post('actualizaMesa', 'AdminController@actualizaMesa');
 Route::get('obtieneCategorias', 'AdminController@obtieneCategorias');
 Route::get('nuevosPedidosmesa/{id}', 'AdminController@nuevosPedidosmesa');
+Route::get('pedidosMesa/{id}', 'AdminController@pedidosMesa');
 

@@ -11,4 +11,8 @@ class Pedido extends Model
     public function detallespedidos(){
         return $this->hasMany('App\DetallePedido','pedidos_id','id')->where('estatusdetallespedidos_id',1);
     }
+
+    public function detallespedidostodos(){
+        return $this->hasMany('App\DetallePedido','pedidos_id','id');
+    }
 }
