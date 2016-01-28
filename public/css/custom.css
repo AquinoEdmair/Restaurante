@@ -6382,3 +6382,7 @@ div .swatch a i{
 .arriba{
     margin-top: -5px;
 }
+
+.badge{
+    background-color: #0095fe;
+}

@@ -49,13 +49,13 @@
 
                         <div class="menu_section">
                             <ul class="nav side-menu">
-                                <li><a href="{{URL::to('categorias')}}"><i class="glyphicon glyphicon-th"></i> &nbsp; Categorías</a>
+                                <li><a href="{{URL::to('categorias')}}"><i class="glyphicon glyphicon-th-list"></i> &nbsp; Categorías</a>
                                 </li>
                                 <li><a href="{{URL::to('productos')}}"><i class="glyphicon glyphicon-glass"></i> &nbsp; Productos</a>
                                 </li>
                                 <li><a href="{{URL::to('usuarios')}}"><i class="glyphicon glyphicon-user"></i> &nbsp; Usuarios</a>
                                 </li>
-                                <li><a href="{{URL::to('mesas')}}"><i class="glyphicon glyphicon-home"></i> &nbsp; Mesas</a>
+                                <li><a href="{{URL::to('mesas')}}"><i class="glyphicon glyphicon-th-large"></i> &nbsp; Mesas</a>
                                 </li>
                                 <li><a href="{{URL::to('servicios')}}"><i class="glyphicon glyphicon-shopping-cart"></i> &nbsp; Servicios</a>
                                 </li>
