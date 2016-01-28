@@ -45,8 +45,6 @@
                                         </div>
                                         @endforeach
                                     </div>
-                                    <!-- Button trigger modal -->
-                                    <!-- Modal -->
                                     <div class="modal fade" id="myModalNotificaciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -82,8 +80,8 @@
                                                 <li class="list-group-item">
                                                     <font color="black"><strong><td>Observaciones:</td></strong></font>
                                                     <td>Que los refrescos esten bien frios</td>
+                                                </li>    
                                                 </ul>
-                                            </table>
                                             </div>
                                             </div>
                                             <br>
