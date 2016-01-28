@@ -315,9 +315,15 @@ $(document).ready(function () {
 
 });
 
-$(".verPedidos").click(function(){
-    $('#myModal').modal('show');
+$('.verNotificaciones').click(function(event){
+    event.preventDefault();
+    var url = this.href;
+    $('#myModalNotificaciones').modal('show');
 });
 
-
+$('.verPedidos').click(function(event){
+    event.preventDefault();
+    var url = this.href;
+    $('#myModalPedidos').modal('show');
+});
 /** ******  /scrollview  *********************** **/

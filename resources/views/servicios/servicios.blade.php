@@ -38,8 +38,8 @@
                                                         @endif
                                                         <br>
                                                         <br>
-                                                        <a data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-taxi ">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</i></a>                                                        
-                                                        <a data-toggle="modal"><i class="fa fa-archive"></i></a>
+                                                        <a href="/servicios/nuevospedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif<i class="fa fa-taxi"></i></a>                                                        
+                                                        <a href="/servicios/pedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-archive"></i></a>
                                                 </div>
                                             </td>
                                         </div>
@@ -47,19 +47,131 @@
                                     </div>
                                     <!-- Button trigger modal -->
                                     <!-- Modal -->
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal fade" id="myModalNotificaciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                           <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                            <h4 class="modal-title" id="myModalLabel">Nuevos Pedidos</h4>
                                           </div>
                                           <div class="modal-body">
-                                            ...
+                                            <table>
+                                                <tr>
+                                                    <td>Nombre:</td>
+                                                    <td>Coca Cola</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cantidad:</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precio:</td>
+                                                    <td>$10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subtotal:</td>
+                                                    <td>$50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Observaciones:</td>
+                                                    <td>Que esten bien frias</td>
+                                                </tr>
+                                            </table>
+                                            <br>
+                                            <br>
+                                             <table>
+                                                <tr>
+                                                    <td>Nombre:</td>
+                                                    <td>Coca Cola</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cantidad:</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precio:</td>
+                                                    <td>$10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subtotal:</td>
+                                                    <td>$50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Observaciones:</td>
+                                                    <td>Que esten bien frias</td>
+                                                </tr>
+                                            </table>
                                           </div>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Aceptar</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="modal fade" id="myModalPedidos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Pedidos</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            <table>
+                                                <tr>
+                                                    <td>Nombre:</td>
+                                                    <td>Coca Cola</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cantidad:</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precio:</td>
+                                                    <td>$10</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subtotal:</td>
+                                                    <td>$50</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Observaciones:</td>
+                                                    <td>Que esten bien frias</td>
+                                                </tr>
+                                            </table>
+                                            <br>
+                                            <br>
+                                             <table>
+                                                <tr>
+                                                    <td>Nombre:</td>
+                                                    <td>Pepsi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cantidad:</td>
+                                                    <td>5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Precio:</td>
+                                                    <td>$9.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subtotal:</td>
+                                                    <td>$45.000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Observaciones:</td>
+                                                    <td>Que no esten muy frias</td>
+                                                </tr>
+                                            </table>
+                                            <br>
+                                            <br>
+                                                <h1>Total: </h1>
+                                                <h2>$95.000</h1>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Cobrar</button>
                                           </div>
                                         </div>
                                       </div>
