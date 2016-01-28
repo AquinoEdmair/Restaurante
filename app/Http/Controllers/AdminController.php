@@ -40,6 +40,12 @@ class AdminController extends BaseController
 
     public function nuevosPedidosmesa($id)
     {
+        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->get();
+        return \Response::json(['error' => 'false', 'msg' => $mesa, 'status' => '200'], 200);
+    }
+
+    public function nuevosPedidosmesalaravel($id)
+    {
         $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->first();
 
         $html = "";
