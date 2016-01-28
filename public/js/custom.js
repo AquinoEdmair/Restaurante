@@ -326,6 +326,7 @@ $('.verNotificaciones').click(function(event){
       success: function(data) { 
           alert(data["error"]);
           alert(data["msg"]);
+
         }  
     });
     $('#myModalNotificaciones').modal('show');
