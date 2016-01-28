@@ -335,6 +335,21 @@ $('.verNotificaciones').click(function(event){
     });
 });
 
+$('.verNotificaciones2').click(function(event){
+    event.preventDefault();
+    var url = this.href;
+    $.ajax({
+      type: 'GET',
+      url: url,  
+      cache: false,
+      dataType: 'json',
+      success: function(data) { 
+          $('#notificaciones_pedidos').html(data['msg']);
+          $('#myModalNotificaciones').modal('show');
+       }  
+    });
+});
+
 $('.verPedidos').click(function(event){
     event.preventDefault();
     var url = this.href;

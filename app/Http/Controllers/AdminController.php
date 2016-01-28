@@ -57,7 +57,7 @@ class AdminController extends BaseController
                     $html .='<div class="media">'
                                 .'<div class="media-left">'
                                     .'<a href="#">'
-                                        .'<img class="media-object" src="{{asset('.$detalle->producto->imagen_principal.')}}" class="thumb" height="75" width="75" alt="a picture">'
+                                        .'<img class="media-object" src="'.$detalle->producto->imagen_principal.'" class="thumb" height="75" width="75" alt="a picture">'
                                     .'</a>'
                                 .'</div>'
                                 .'<div class="media-body">'
