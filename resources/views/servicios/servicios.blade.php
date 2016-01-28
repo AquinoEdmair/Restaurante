@@ -53,39 +53,10 @@
                                             <h4 class="modal-title" id="myModalLabel">Nuevos Pedidos</h4>
                                           </div>
                                           <div class="modal-body" id="notificaciones_pedidos">
-                                            <div class="media">
-                                            <div class="media-left">
-                                              <a href="#">
-                                                <img class="media-object" src='{{asset('/imagenes/productos/hotdog.jpg')}}' class="thumb" height="75" width="75" alt="a picture">
-                                              </a>
-                                            </div>
-                                            <div class="media-body">
-                                              <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <font color="black"><strong><td>Nombre:</td></strong></font>
-                                                    <td>Coca Cola</td>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <font color="black"><strong><td>Descripción:</td></strong></font>
-                                                    <td>Aqui va la descripción del producto Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta.</td>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <font color="black"><strong><td>Cantidad:</td></strong></font>
-                                                    <font color="red"><td>5 &nbsp; &nbsp; &nbsp;</td></font>
-                                                    <font color="black"><strong><td>Precio:</td></strong></font>
-                                                    <font color="red"><td>$10 &nbsp; &nbsp; &nbsp;</td></font>
-                                                    <font color="black"><strong><td>Subtotal:</td></strong></font>
-                                                    <font color="red"><td>$50</td></font>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <font color="black"><strong><td>Observaciones:</td></strong></font>
-                                                    <td>Que los refrescos esten bien frios</td>
-                                                </li>    
-                                                </ul>
-                                            </div>
-                                            </div>
-                                            <br>
-                                            <br>
+
+
+                                            
+
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
