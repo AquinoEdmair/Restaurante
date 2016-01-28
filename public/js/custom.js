@@ -318,6 +318,16 @@ $(document).ready(function () {
 $('.verNotificaciones').click(function(event){
     event.preventDefault();
     var url = this.href;
+    $.ajax({
+      type: 'GET',
+      url: url,  
+      cache: false,
+      dataType: 'json',
+      success: function(data) { 
+          alert(data["error"]);
+          alert(data["msg"]);
+        }  
+    });
     $('#myModalNotificaciones').modal('show');
 });
 

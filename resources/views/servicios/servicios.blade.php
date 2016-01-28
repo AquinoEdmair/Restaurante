@@ -38,8 +38,8 @@
                                                         @endif
                                                         <br>
                                                         <br>
-                                                        <a href="/servicios/nuevospedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif<i class="fa fa-taxi"></i></a>                                                        
-                                                        <a href="/servicios/pedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-archive"></i></a>
+                                                        <a href="nuevosPedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif<i class="fa fa-taxi"></i></a>                                                        
+                                                        <a href="pedidosMesa/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-archive"></i></a>
                                                 </div>
                                             </td>
                                         </div>
