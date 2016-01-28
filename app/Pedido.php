@@ -9,7 +9,7 @@ class Pedido extends Model
     protected $table = 'tbl_pedidos';
 
     public function detallespedidos(){
-        return $this->hasMany('App\DetallePedido','pedidos_id','id')->where('estatusdetallespedidos_id',1);
+        return $this->hasMany('App\DetallePedido','pedidos_id','id')->with('producto')->where('estatusdetallespedidos_id',1);
     }
 
     public function detallespedidostodos(){
