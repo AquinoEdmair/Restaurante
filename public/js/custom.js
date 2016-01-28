@@ -315,27 +315,8 @@ $(document).ready(function () {
 
 });
 
+
 $('.verNotificaciones').click(function(event){
-    event.preventDefault();
-    var url = this.href;
-    $.ajax({
-      type: 'GET',
-      url: url,  
-      cache: false,
-      dataType: 'json',
-      success: function(data) { 
-
-          $('#notificaciones_pedidos').html('');
-          for (var i = 0; i < data['msg'][0]['pedido']['detallespedidos'].length; i++) {
-            var aux = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" src="imagenes/productos/hotdog.jpg" class="thumb" height="75" width="75" alt="a picture"></a></div><div class="media-body"><ul class="list-group"><li class="list-group-item"><font color="black"><strong><td> Nombre: </td></strong></font><td> '+ data['msg'][0]['pedido']['detallespedidos'][i]['nombre'].toString() + ' </td></li><li class="list-group-item"><font color="black"><strong><td>Descripción:</td></strong></font><td>No esta</td></li><li class="list-group-item"><font color="black"><strong><td> Cantidad: </td></strong></font><font color="red"><td> '+ data['msg'][0]['pedido']['detallespedidos'][i]['cantidad'].toString() + ' &nbsp; &nbsp; &nbsp;</td></font><font color="black"><strong><td> Precio: </td></strong></font><font color="red"><td> $ '+ data['msg'][0]['pedido']['detallespedidos'][i]['precio'].toString() + ' &nbsp; &nbsp; &nbsp;</td></font><font color="black"><strong><td> Subtotal: </td></strong></font><font color="red"><td> $ '+ data['msg'][0]['pedido']['detallespedidos'][i]['subtotal'].toString() + ' </td></font></li><li class="list-group-item"><font color="black"><strong><td> Observaciones: </td></strong></font><td> '+ data['msg'][0]['pedido']['detallespedidos'][i]['nombre'].toString() + ' </td></li></ul></div></div><br><br>';
-            $('#notificaciones_pedidos').append(aux);
-        };
-        $('#myModalNotificaciones').modal('show');
-       }  
-    });
-});
-
-$('.verNotificaciones2').click(function(event){
     event.preventDefault();
     var url = this.href;
     $.ajax({

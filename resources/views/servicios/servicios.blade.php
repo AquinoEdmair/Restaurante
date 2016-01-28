@@ -38,8 +38,7 @@
                                                         @endif
                                                         <br>
                                                         <br>
-                                                        <a href="nuevosPedidosmesa/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>
-                                                        <a href="nuevosPedidosmesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones2" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>                                                                                                                
+                                                        <a href="nuevosPedidosmesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>                                                                                                                
                                                         <a href="pedidosMesa/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>
                                                 </div>
                                             </td>
