@@ -9,9 +9,9 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Lista de Administradores</h2>
+                                    <h2>Lista de Usuarios</h2>
                                     <div class="clearfix"></div>
-                                    <a href="{{URL::to('usuarios/create')}}" class="btn btn-primary">Nuevo Administrador</a>
+                                    <a href="{{URL::to('usuarios/create')}}" class="btn btn-primary">Nuevo Usuario</a>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
