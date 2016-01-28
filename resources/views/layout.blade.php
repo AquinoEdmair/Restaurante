@@ -57,7 +57,7 @@
                                 </li>
                                 <li><a href="{{URL::to('mesas')}}"><i class="fa fa-laptop"></i> Mesas</a>
                                 </li>
-                                <li><a href="{{URL::to('servicios')}}"><i class="fa fa-laptop"></i> Servicios</a>
+                                <li><a href="{{URL::to('servicios')}}"><i class="glyphicon glyphicon-shopping-cart"></i> Servicios</a>
                                 </li>
                             </ul>
                         </div>
