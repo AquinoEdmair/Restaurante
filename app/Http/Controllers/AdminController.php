@@ -37,19 +37,10 @@ class AdminController extends BaseController
     	return \Response::json(['error' => 'false', 'msg' => $categorias, 'status' => '200'], 200);
     }
 
-
-    public function nuevosPedidosmesa($id)
-    {
-        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->get();
-        return \Response::json(['error' => 'false', 'msg' => $mesa, 'status' => '200'], 200);
-    }
-
     public function nuevosPedidosmesalaravel($id)
     {
         $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->first();
-
         $html = "";
-
         if($mesa->pedido){
             if($mesa->pedido->detallespedidos){
 
@@ -64,11 +55,57 @@ class AdminController extends BaseController
                                     .'<ul class="list-group">'
                                         .'<li class="list-group-item">'
                                             .'<font color="black"><strong><td>Nombre:</td></strong></font>'
-                                            .'<td>'.$detalle->nombre.'</td>'
+                                            .'<td> '.$detalle->producto->nombre.' </td>'
                                         .'</li>'
                                         .'<li class="list-group-item">'
                                             .'<font color="black"><strong><td>Descripción:</td></strong></font>'
-                                            .'<td>'.$detalle->producto->detalles.'</td>'
+                                            .'<td> '.$detalle->producto->detalles.' </td>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td> Cantidad: </td></strong></font>'
+                                            .'<font color="red"><td>'.$detalle->cantidad.' &nbsp; &nbsp; &nbsp;</td></font>'
+                                            .'<font color="black"><strong><td> Precio: </td></strong></font>'
+                                            .'<font color="red"><td>$'.$detalle->precio.' &nbsp; &nbsp; &nbsp;</td></font>'
+                                            .'<font color="black"><strong><td> Subtotal: </td></strong></font>'
+                                            .'<font color="red"><td>$'.$detalle->subtotal.' </td></font>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td> Observaciones: </td></strong></font>'
+                                            .'<td> '.$detalle->observaciones.' </td>'
+                                        .'</li>' 
+                                    .'</ul>'
+                                .'</div>'
+                            .'</div>';
+                }
+                
+            }
+        }
+        return \Response::json(['error' => 'false', 'msg' => $html, 'status' => '200'], 200);
+    }
+
+    public function pedidosMesalaravel($id)
+    {
+        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
+        $html = "";
+        if($mesa->pedido){
+            if($mesa->pedido->detallespedidostodos){
+
+                foreach ($mesa->pedido->detallespedidostodos as $detalle) {
+                    $html .='<div class="media">'
+                                .'<div class="media-left">'
+                                    .'<a href="#">'
+                                        .'<img class="media-object" src="'.$detalle->producto->imagen_principal.'" class="thumb" height="75" width="75" alt="a picture">'
+                                    .'</a>'
+                                .'</div>'
+                                .'<div class="media-body">'
+                                    .'<ul class="list-group">'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Nombre:</td></strong></font>'
+                                            .'<td> '.$detalle->producto->nombre.' </td>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Descripción:</td></strong></font>'
+                                            .'<td> '.$detalle->producto->detalles.' </td>'
                                         .'</li>'
                                         .'<li class="list-group-item">'
                                             .'<font color="black"><strong><td>Cantidad:</td></strong></font>'
@@ -76,29 +113,20 @@ class AdminController extends BaseController
                                             .'<font color="black"><strong><td>Precio:</td></strong></font>'
                                             .'<font color="red"><td>$'.$detalle->precio.' &nbsp; &nbsp; &nbsp;</td></font>'
                                             .'<font color="black"><strong><td>Subtotal:</td></strong></font>'
-                                            .'<font color="red"><td>$'.($detalle->cantidad*$detalle->precio).'</td></font>'
+                                            .'<font color="red"><td>$'.$detalle->subtotal.' </td></font>'
                                         .'</li>'
                                         .'<li class="list-group-item">'
                                             .'<font color="black"><strong><td>Observaciones:</td></strong></font>'
-                                            .'<td>'.$detalle->nombre.'</td>'
+                                            .'<td> '.$detalle->observaciones.' </td>'
                                         .'</li>' 
                                     .'</ul>'
                                 .'</div>'
-                            .'</div>'
-                            .'<br><br>';
+                            .'</div>';
                 }
                 
             }
         }
-
         return \Response::json(['error' => 'false', 'msg' => $html, 'status' => '200'], 200);
     }
-
-    public function pedidosMesa($id)
-    {
-        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->get();
-        return \Response::json(['error' => 'false', 'msg' => $mesa, 'status' => '200'], 200);
-    }
-
 
 }

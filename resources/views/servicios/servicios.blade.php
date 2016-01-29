@@ -39,7 +39,7 @@
                                                         <br>
                                                         <br>
                                                         <a href="nuevosPedidosmesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>                                                                                                                
-                                                        <a href="pedidosMesa/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>
+                                                        <a href="pedidosMesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>
                                                 </div>
                                             </td>
                                         </div>
@@ -53,9 +53,6 @@
                                             <h4 class="modal-title" id="myModalLabel">Nuevos Pedidos</h4>
                                           </div>
                                           <div class="modal-body" id="notificaciones_pedidos">
-
-
-
 
                                           </div>
                                           <div class="modal-footer">
@@ -74,56 +71,7 @@
                                             <h4 class="modal-title" id="myModalLabel">Pedidos</h4>
                                           </div>
                                           <div class="modal-body" id="pedidos_detalle">
-                                            <table>
-                                                <tr>
-                                                    <td>Nombre:</td>
-                                                    <td>Coca Cola</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cantidad:</td>
-                                                    <td>5</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Precio:</td>
-                                                    <td>$10</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Subtotal:</td>
-                                                    <td>$50</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Observaciones:</td>
-                                                    <td>Que esten bien frias</td>
-                                                </tr>
-                                            </table>
-                                            <br>
-                                            <br>
-                                             <table>
-                                                <tr>
-                                                    <td>Nombre:</td>
-                                                    <td>Pepsi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cantidad:</td>
-                                                    <td>5</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Precio:</td>
-                                                    <td>$9.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Subtotal:</td>
-                                                    <td>$45.000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Observaciones:</td>
-                                                    <td>Que no esten muy frias</td>
-                                                </tr>
-                                            </table>
-                                            <br>
-                                            <br>
-                                                <h1>Total: </h1>
-                                                <h2>$95.000</h1>
+                                            
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
