@@ -16,7 +16,7 @@ class CreateDetallespedidosTable extends Migration
             $table->increments('id');
             $table->integer('pedidos_id');
             $table->integer('productos_id');
-            $table->string('nombre');
+            $table->string('observaciones');
             $table->decimal('precio', 8, 3); 
             $table->tinyInteger('cantidad');
             $table->decimal('subtotal', 8, 3); 
@@ -24,6 +24,7 @@ class CreateDetallespedidosTable extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
