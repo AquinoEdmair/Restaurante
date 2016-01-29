@@ -39,4 +39,4 @@ Route::post('actualizaMesa', 'AdminController@actualizaMesa');
 Route::get('obtieneCategorias', 'AdminController@obtieneCategorias');
 Route::get('nuevosPedidosmesalaravel/{id}', 'AdminController@nuevosPedidosmesalaravel');
 Route::get('pedidosMesalaravel/{id}', 'AdminController@pedidosMesalaravel');
-
+Route::post('downNotificationsByMesa', 'AdminController@downNotificationsByMesa');

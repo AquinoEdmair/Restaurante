@@ -326,6 +326,7 @@ $('.verNotificaciones').click(function(event){
       dataType: 'json',
       success: function(data) { 
           $('#notificaciones_pedidos').html(data['msg']);
+          $('#notificaciones_pedidos_submit').html(data['msg2']);
           $('#myModalNotificaciones').modal('show');
        }  
     });

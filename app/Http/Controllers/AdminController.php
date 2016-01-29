@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
 use App\Mesa;
 use App\Categoria;
+use App\DetallePedido;
 use Illuminate\Http\Request;
 
 class AdminController extends BaseController
@@ -41,10 +42,11 @@ class AdminController extends BaseController
     {
         $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->first();
         $html = "";
+        $ids_detallePedido = "";
         if($mesa->pedido){
             if($mesa->pedido->detallespedidos){
-
                 foreach ($mesa->pedido->detallespedidos as $detalle) {
+                    $ids_detallePedido .=  $detalle->id.',';
                     $html .='<div class="media">'
                                 .'<div class="media-left">'
                                     .'<a href="#">'
@@ -80,7 +82,14 @@ class AdminController extends BaseController
                 
             }
         }
-        return \Response::json(['error' => 'false', 'msg' => $html, 'status' => '200'], 200);
+        $html2 = "";
+        $html2 .='<form action="downNotificationsByMesa" method="post">'       
+                    .'<input type="hidden" name="id_mesa" value="'.$id.'">'
+                    .'<input type="hidden" name="id_detallePedido" value="'.$ids_detallePedido.'">'
+                    .'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>'
+                    .'<button type="submit" class="btn btn-primary arriba">Aceptar</button>'
+                .'</form>';
+        return \Response::json(['error' => 'false', 'msg' => $html, 'msg2' => $html2 , 'status' => '200'], 200);
     }
 
     public function pedidosMesalaravel($id)
@@ -127,6 +136,22 @@ class AdminController extends BaseController
             }
         }
         return \Response::json(['error' => 'false', 'msg' => $html, 'status' => '200'], 200);
+    }
+
+    public function downNotificationsByMesa(Request $request)
+    {
+        $id_mesa = $request->id_mesa;
+        if(strlen($request->id_detallePedido) > 0)
+        {
+            $ids_detallePedido = $myString = trim($request->id_detallePedido, ',');
+            $myArray = explode(',', $ids_detallePedido);
+            foreach($myArray as $id_detallePedido){
+                $detallespedidos = DetallePedido::find($id_detallePedido);
+                $detallespedidos->estatusdetallespedidos_id = 2;
+                $detallespedidos->save();
+            }
+        }       
+        return redirect()->back();
     }
 
 }
