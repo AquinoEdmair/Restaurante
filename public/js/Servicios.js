@@ -33,7 +33,17 @@ function Modales()
 	});
 }
 
- var counter = 10;
+     $.ajax({
+      type: 'GET',
+      url: 'verMesasHtml',  
+      cache: false,
+      dataType: 'json',
+      success: function(data) { 
+          $('#paint_mesas').html(data['msg']);
+          Modales();
+       }  
+    });
+ var counter = 100;
  setInterval(function(){
  	counter--
  	if (counter === 0) {

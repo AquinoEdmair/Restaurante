@@ -11,11 +11,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends BaseController
 {
-	public function verMesas()
-    {
-        
-    	$servicios = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->with('pedido')->get();
-        return view('servicios.servicios')->with(compact('servicios'));
+   public function verMesas()
+   {
+        return view('servicios.servicios');
    }
    public function vermesashtml()
    {
