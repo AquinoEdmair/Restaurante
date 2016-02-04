@@ -15,35 +15,36 @@
                                 </div>
                                 <div class="x_content">
                                     <div class="col-md-12 col-sm-12 col-xs-6" >
-
-                                        @foreach($servicios as $servicio)
-                                        <div class="col-md-3 col-sm-3 col-xs-12" id ="{{ $servicio->id }}">
-                                            <td style="padding-right:5px;">
-                                                @if($servicio->asignacion==0)
-                                                    <div class="swatch swatchNoAsignada">
-                                                @elseif($servicio->asignacion==1)
-                                                    @if($servicio->estatusmesas_id==1)
-                                                        <div class="swatch swatchDisponible">
-                                                    @elseif($servicio->estatusmesas_id==2)
-                                                        <div class="swatch swatchOcupada">
-                                                    @endif   
-                                                @endif
-                                                    <br>
-                                                        {{$servicio->nombre}}
+                                        <div id="paint_mesas">
+                                            @foreach($servicios as $servicio)
+                                            <div class="col-md-3 col-sm-3 col-xs-12" id ="{{ $servicio->id }}">
+                                                <td style="padding-right:5px;">
+                                                    @if($servicio->asignacion==0)
+                                                        <div class="swatch swatchNoAsignada">
+                                                    @elseif($servicio->asignacion==1)
+                                                        @if($servicio->estatusmesas_id==1)
+                                                            <div class="swatch swatchDisponible">
+                                                        @elseif($servicio->estatusmesas_id==2)
+                                                            <div class="swatch swatchOcupada">
+                                                        @endif   
+                                                    @endif
                                                         <br>
-                                                        @if($servicio->pedido)
-                                                        $  {{$servicio->pedido->total}}
-                                                        @else
-                                                        $ 0.000
-                                                        @endif
-                                                        <br>
-                                                        <br>
-                                                        <a href="nuevosPedidosmesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>                                                                                                                
-                                                        <a href="pedidosMesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>
-                                                </div>
-                                            </td>
+                                                            {{$servicio->nombre}}
+                                                            <br>
+                                                            @if($servicio->pedido)
+                                                            $  {{$servicio->pedido->total}}
+                                                            @else
+                                                            $ 0.000
+                                                            @endif
+                                                            <br>
+                                                            <br>
+                                                            <a href="nuevosPedidosmesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">@if($servicio->pedido) {{$servicio->pedido->detallespedidos->count()}} @endif</span><i class="fa fa-book"></i></a>                                                                                                                
+                                                            <a href="pedidosMesalaravel/{{ $servicio->id }}" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>
+                                                    </div>
+                                                </td>
+                                            </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
                                     </div>
                                     <div class="modal fade" id="myModalNotificaciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
@@ -92,13 +93,4 @@
 @stop
 @section('scripts')
 <script type="text/javascript" src="{{URL::asset('js/Servicios.js')}}"></script>
-<script type="text/javascript">
-var ids_mesas = [
-@foreach ($servicios as $servicio)
-    [{{ $servicio->id }}],     
-@endforeach
-];
-
-
-</script>
 @stop

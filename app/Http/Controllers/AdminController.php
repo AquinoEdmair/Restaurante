@@ -13,10 +13,41 @@ class AdminController extends BaseController
 {
 	public function verMesas()
     {
+        
     	$servicios = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->with('pedido')->get();
         return view('servicios.servicios')->with(compact('servicios'));
-    }
-
+   }
+   public function vermesashtml()
+   {
+      $servicios = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->with('pedido')->get();
+      $html = "";
+        foreach ($servicios as $servicio) {
+        $html .='<div class="col-md-3 col-sm-3 col-xs-12" id ="'.$servicio->id.'">';     
+                    $html .='<td style="padding-right:5px;">';
+                        if($servicio->asignacion==0)
+                           $html .='<div class="swatch swatchNoAsignada">';
+                        else if($servicio->asignacion==1)
+                            if($servicio->estatusmesas_id==1)
+                               $html .='<div class="swatch swatchDisponible">';
+                            else if($servicio->estatusmesas_id==2)
+                               $html .='<div class="swatch swatchOcupada">';   
+                            $html .='<br>';
+                                $html .=$servicio->nombre;
+                                $html .='<br>';
+                                if($servicio->pedido)
+                                $html .='$ '.$servicio->pedido->total;
+                                else
+                                $html .='$ 0.000';
+                                $html .='<br>';
+                                $html .='<br>';
+                                $html .='<a href="nuevosPedidosmesalaravel/'.$servicio->id.'" data-toggle="modal" class="verNotificaciones" style="cursor:pointer"><span class="badge">';if($servicio->pedido) $html .=$servicio->pedido->detallespedidos->count(); $html .='</span><i class="fa fa-book"></i></a>';                                                                                                                
+                                $html .='<a href="pedidosMesalaravel/'.$servicio->id. '" data-toggle="modal" class="verPedidos" style="cursor:pointer"><i class="fa fa-credit-card"></i></a>';
+                    $html .='</div>';
+                $html .='</td>';
+            $html .='</div>';
+        }
+        return \Response::json(['error' => 'false', 'msg' => $html , 'status' => '200'], 200);
+   }
     public function obtieneMesas()
     {
     	$mesas = Mesa::where('activo',1)->orderBy('nombre')->with('estatusmesas')->get();
@@ -43,6 +74,7 @@ class AdminController extends BaseController
     {
         $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedido')->first();
         $html = "";
+        $html2 = "";
         $ids_detallePedido = "";
         if($mesa->pedido){
             if($mesa->pedido->detallespedidos){
@@ -82,14 +114,16 @@ class AdminController extends BaseController
                 }
                 
             }
-        }
-        $html2 = "";
-        $html2 .='<form action="downNotificationsByMesa" method="post">'       
+            if(strlen($ids_detallePedido) > 0)
+            {
+                $html2 .='<form action="downNotificationsByMesa" method="post">'       
                     .'<input type="hidden" name="id_mesa" value="'.$id.'">'
                     .'<input type="hidden" name="id_detallePedido" value="'.$ids_detallePedido.'">'
                     .'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>'
                     .'<button type="submit" class="btn btn-primary arriba">Aceptar</button>'
                 .'</form>';
+            }
+        }
         return \Response::json(['error' => 'false', 'msg' => $html, 'msg2' => $html2 , 'status' => '200'], 200);
     }
 
@@ -97,6 +131,7 @@ class AdminController extends BaseController
     {
         $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
         $html = "";
+        $html2 = "";
         if($mesa->pedido){
             if($mesa->pedido->detallespedidostodos){
 
@@ -135,14 +170,15 @@ class AdminController extends BaseController
                 }
                 
             }
+            if($mesa->pedido){
+            $html2 .='<form action="toPayByMesa" method="post">'       
+                .'<input type="hidden" name="id_mesa" value="'.$id.'">'
+                .'<input type="hidden" name="id_pedido" value="'.$mesa->pedido->id.'">'
+                .'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>'
+                .'<button type="submit" class="btn btn-primary arriba">Pagar</button>'
+            .'</form>';
+            }
         }
-        $html2 = "";
-        $html2 .='<form action="toPayByMesa" method="post">'       
-                    .'<input type="hidden" name="id_mesa" value="'.$id.'">'
-                    .'<input type="hidden" name="id_pedido" value="'.$mesa->pedido->id.'">'
-                    .'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>'
-                    .'<button type="submit" class="btn btn-primary arriba">Pagar</button>'
-                .'</form>';
         return \Response::json(['error' => 'false', 'msg' => $html, 'msg2' => $html2 , 'status' => '200'], 200);
     }
 

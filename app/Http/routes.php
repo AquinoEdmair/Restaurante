@@ -41,3 +41,4 @@ Route::get('nuevosPedidosmesalaravel/{id}', 'AdminController@nuevosPedidosmesala
 Route::get('pedidosMesalaravel/{id}', 'AdminController@pedidosMesalaravel');
 Route::post('downNotificationsByMesa', 'AdminController@downNotificationsByMesa');
 Route::post('toPayByMesa', 'AdminController@toPayByMesa');
+Route::get('verMesasHtml', 'AdminController@verMesasHtml');
