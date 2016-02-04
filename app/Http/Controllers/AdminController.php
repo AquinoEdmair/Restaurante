@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
 use App\Mesa;
 use App\Categoria;
+use App\Pedido;
 use App\DetallePedido;
 use Illuminate\Http\Request;
 
@@ -135,7 +136,14 @@ class AdminController extends BaseController
                 
             }
         }
-        return \Response::json(['error' => 'false', 'msg' => $html, 'status' => '200'], 200);
+        $html2 = "";
+        $html2 .='<form action="toPayByMesa" method="post">'       
+                    .'<input type="hidden" name="id_mesa" value="'.$id.'">'
+                    .'<input type="hidden" name="id_pedido" value="'.$mesa->pedido->id.'">'
+                    .'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>'
+                    .'<button type="submit" class="btn btn-primary arriba">Pagar</button>'
+                .'</form>';
+        return \Response::json(['error' => 'false', 'msg' => $html, 'msg2' => $html2 , 'status' => '200'], 200);
     }
 
     public function downNotificationsByMesa(Request $request)
@@ -151,6 +159,23 @@ class AdminController extends BaseController
                 $detallespedidos->save();
             }
         }       
+        return redirect()->back();
+    }
+
+    public function toPayByMesa(Request $request)
+    {
+        $id_mesa = $request->id_mesa;
+        $id_pedido = $request->id_pedido;
+
+        $mesa = Mesa::find($id_mesa);
+        $mesa->estatusmesas_id = 1;
+        $mesa->save();
+
+        $pedido = Pedido::find($id_pedido);
+        $pedido->estatuspedidos_id = 2;
+        $pedido->save();
+
+        //Imprimir Ticket
         return redirect()->back();
     }
 

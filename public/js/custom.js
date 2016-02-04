@@ -342,6 +342,7 @@ $('.verPedidos').click(function(event){
       dataType: 'json',
       success: function(data) { 
           $('#pedidos_detalle').html(data['msg']);
+          $('#pedidos_detalle_submit').html(data['msg2']);
           $('#myModalPedidos').modal('show');
        }  
     });
