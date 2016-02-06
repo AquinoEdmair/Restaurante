@@ -13,7 +13,7 @@ class Pedido extends Model
     }
 
     public function detallespedidostodos(){
-        return $this->hasMany('App\DetallePedido','pedidos_id','id');
+        return $this->hasMany('App\DetallePedido','pedidos_id','id')->with('producto');
     }
 
     public function estatuspedido(){

@@ -221,15 +221,10 @@ class AdminController extends BaseController
 
     public function pedidosCajalaravel($id)
     {
-        
-        //$mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
-        $pedido = Pedido::where('id',$id)->where('activo',1)->with('detallespedidos');
-        return $pedido;
-
+        $pedido = Pedido::where('id',$id)->where('activo',1)->with('detallespedidostodos')->first();
         $html = "";
         $html2 = "";
             if($pedido->detallespedidostodos){
-
                 foreach ($pedido->detallespedidostodos as $detalle) {
                     $html .='<div class="media">'
                                 .'<div class="media-left">'
