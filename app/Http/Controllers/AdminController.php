@@ -213,4 +213,59 @@ class AdminController extends BaseController
         return redirect()->back();
     }
 
+    public function pedidos()
+    {
+        $pedidos = Pedido::where('activo',1)->orderBy('created_at')->with('mesa')->with('estatuspedido')->get();
+        return view('pedidos.pedidos')->with(compact('pedidos'));
+    }
+
+    public function pedidosCajalaravel($id)
+    {
+        //$pedidos = Pedido::where('id',$id)->where('activo',1)->with('detallespedidostodos')
+        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
+        $html = "";
+        $html2 = "";
+        if($mesa->pedido){
+            if($mesa->pedido->detallespedidostodos){
+
+                foreach ($mesa->pedido->detallespedidostodos as $detalle) {
+                    $html .='<div class="media">'
+                                .'<div class="media-left">'
+                                    .'<a href="#">'
+                                        .'<img class="media-object" src="'.$detalle->producto->imagen_principal.'" class="thumb" height="75" width="75" alt="a picture">'
+                                    .'</a>'
+                                .'</div>'
+                                .'<div class="media-body">'
+                                    .'<ul class="list-group">'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Nombre:</td></strong></font>'
+                                            .'<td> '.$detalle->producto->nombre.' </td>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Descripción:</td></strong></font>'
+                                            .'<td> '.$detalle->producto->detalles.' </td>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Cantidad:</td></strong></font>'
+                                            .'<font color="red"><td>'.$detalle->cantidad.' &nbsp; &nbsp; &nbsp;</td></font>'
+                                            .'<font color="black"><strong><td>Precio:</td></strong></font>'
+                                            .'<font color="red"><td>$'.$detalle->precio.' &nbsp; &nbsp; &nbsp;</td></font>'
+                                            .'<font color="black"><strong><td>Subtotal:</td></strong></font>'
+                                            .'<font color="red"><td>$'.$detalle->subtotal.' </td></font>'
+                                        .'</li>'
+                                        .'<li class="list-group-item">'
+                                            .'<font color="black"><strong><td>Observaciones:</td></strong></font>'
+                                            .'<td> '.$detalle->observaciones.' </td>'
+                                        .'</li>' 
+                                    .'</ul>'
+                                .'</div>'
+                            .'</div>';
+                }
+                
+            }
+        }
+        return \Response::json(['error' => 'false', 'msg' => $html , 'status' => '200'], 200);
+    }
+
+
 }

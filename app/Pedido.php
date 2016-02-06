@@ -15,4 +15,12 @@ class Pedido extends Model
     public function detallespedidostodos(){
         return $this->hasMany('App\DetallePedido','pedidos_id','id');
     }
+
+    public function estatuspedido(){
+        return $this->hasOne('App\EstatusPedido','id','estatuspedidos_id');
+    }
+   public function mesa(){
+        return $this->hasOne('App\Mesa','id','mesas_id');
+    }
+
 }

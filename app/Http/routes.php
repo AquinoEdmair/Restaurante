@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('usuarios', 'UsuariosController');
     Route::resource('mesas', 'MesasController');
     Route::get('servicios', 'AdminController@verMesas');
+    Route::get('pedidos', 'AdminController@pedidos');
 });
 
 Route::get('obtieneMesas', 'AdminController@obtieneMesas');
