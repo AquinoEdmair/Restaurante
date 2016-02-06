@@ -11,4 +11,8 @@ class DetallePedido extends Model
     public function producto(){
         return $this->hasOne('App\Producto','id','productos_id');
     }
+
+    public function pedidostodos(){
+        return $this->hasOne('App\Pedido','id','pedidos_id');
+    }
 }

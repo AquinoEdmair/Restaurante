@@ -221,14 +221,14 @@ class AdminController extends BaseController
 
     public function pedidosCajalaravel($id)
     {
-        //$pedidos = Pedido::where('id',$id)->where('activo',1)->with('detallespedidostodos')
-        $mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
+        
+        //$mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
+        $pedido = Pedido::where('id',$id)->where('activo',1)->with('pedidostodos')->with('producto');
         $html = "";
         $html2 = "";
-        if($mesa->pedido){
-            if($mesa->pedido->detallespedidostodos){
+            if($pedido->detallespedidostodos){
 
-                foreach ($mesa->pedido->detallespedidostodos as $detalle) {
+                foreach ($pedido->detallespedidostodos as $detalle) {
                     $html .='<div class="media">'
                                 .'<div class="media-left">'
                                     .'<a href="#">'
@@ -263,7 +263,6 @@ class AdminController extends BaseController
                 }
                 
             }
-        }
         return \Response::json(['error' => 'false', 'msg' => $html , 'status' => '200'], 200);
     }
 
