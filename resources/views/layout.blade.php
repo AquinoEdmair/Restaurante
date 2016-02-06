@@ -59,6 +59,8 @@
                                 </li>
                                 <li><a href="{{URL::to('servicios')}}"><i class="glyphicon glyphicon-shopping-cart"></i> &nbsp; Servicios</a>
                                 </li>
+                                <li><a href="{{URL::to('pedidos')}}"><i class="glyphicon glyphicon-shopping-cart"></i> &nbsp; Servicios</a>
+                                </li>
                             </ul>
                         </div>
 
