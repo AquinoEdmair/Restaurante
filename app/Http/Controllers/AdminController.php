@@ -223,7 +223,9 @@ class AdminController extends BaseController
     {
         
         //$mesa = Mesa::where('id',$id)->where('estatusmesas_id',2)->where('activo',1)->with('estatusmesas')->with('pedidos')->first();
-        $pedido = Pedido::where('id',$id)->where('activo',1)->with('pedidostodos')->with('producto');
+        $pedido = Pedido::where('id',$id)->where('activo',1)->with('detallespedidos');
+        return $pedido;
+
         $html = "";
         $html2 = "";
             if($pedido->detallespedidostodos){
